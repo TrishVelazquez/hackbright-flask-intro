@@ -57,7 +57,7 @@ def say_hello():
             </select>
           <input type="submit" value="Submit">
         </form><br>
-        <form action="/diss">
+        <form action="/diss" method="POST">
           What's your name? <input type="text" name="person"><br>
           Choose your insult: 
             <input type="radio" name="diss" value="lame">Lame
@@ -93,12 +93,12 @@ def greet_person():
     """.format(player, compliment)
 
 
-@app.route('/diss')
+@app.route('/diss', methods=["POST"])
 def insult_person():
     """Get user by name."""
 
-    player = request.args.get("person")
-    insult = request.args.get("diss")
+    player = request.form.get("person")
+    insult = request.form.get("diss")
 
     # compliment = choice(AWESOMENESS)
 
